@@ -14,7 +14,7 @@
   <url-pattern>/views/*</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
   <servlet-name>UserController</servlet-name>
   <servlet-class>com.board.bdi.controller.UserController</servlet-class>
   </servlet>
@@ -23,4 +23,25 @@
   <url-pattern>/users/*</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>BoardController</servlet-name>
+  <servlet-class>com.board.bdi.controller.BoardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>BoardController</servlet-name>
+  <url-pattern>/board/*</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  <servlet-name>TestController</servlet-name>
+  <servlet-class>com.board.bdi.controller.TestController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>TestController</servlet-name>
+  <url-pattern>/test/*</url-pattern>
+  </servlet-mapping>
+  
+  <session-config>
+  <session-timeout>5</session-timeout>
+  </session-config>
 </web-app>

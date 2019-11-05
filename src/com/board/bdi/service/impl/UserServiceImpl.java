@@ -10,7 +10,6 @@ import com.board.bdi.service.UserService;
 public class UserServiceImpl implements UserService {
 	private UserDAO udao = new UserDAOImpl();
 	
-	@Override
 	public Map<String,String> doLogin(String uiId, String uiPwd) {
 		Map<String,String> user = new HashMap<>();
 		user.put("uiId",uiId);

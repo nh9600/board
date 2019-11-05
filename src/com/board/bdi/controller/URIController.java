@@ -21,7 +21,10 @@ public class URIController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);//doGet메서드를 호출 위에 것을 읽음
+		String uri=request.getRequestURI();
+	    uri=PREFIX+ uri +SUFFIX;
+		RequestDispatcher rd = request.getRequestDispatcher(uri);
+		rd.forward(request,response);
 	}
 
 }
