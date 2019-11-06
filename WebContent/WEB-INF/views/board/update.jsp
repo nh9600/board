@@ -9,23 +9,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get" action="/board/update">
+
+	<form method="post" action="/board/update">
 		<table border="1">
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="bi_title" value="<%=board.get("biTitle")%>"></td>
+				<td><input type="text" name="biTitle" value="${board.biTitle}"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><input type="text" name="bi_content" ></td>
+				<td><input type="text" name="biContent" value="${board.biContent}" ></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
 				<td><%=user.get("uiNum")%></td>
 			</tr>
 			<tr>
-				<th colspan="2"><button>작성완료</button>
+				<th colspan="2"><button>수정완료</button></th>
+			</tr>
 		</table>
+		<input type="hidden" name="biNum" id="biNum" value="${board.biNum}">
 	</form>
 </body>
 </html>

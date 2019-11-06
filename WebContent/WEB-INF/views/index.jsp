@@ -18,6 +18,7 @@ if(user==null){
 }else{
 %>
 <a href="/board/list"><button>게시판 가기</button></a>
+<a href="/users/logout"><button>로그아웃</button></a>
 <%
 }
 %>

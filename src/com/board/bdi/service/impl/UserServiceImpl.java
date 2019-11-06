@@ -1,13 +1,14 @@
 package com.board.bdi.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.board.bdi.dao.UserDAO;
 import com.board.bdi.dao.impl.UserDAOImpl;
 import com.board.bdi.service.UserService;
 
-public class UserServiceImpl implements UserService {
+public abstract class UserServiceImpl implements UserService {
 	private UserDAO udao = new UserDAOImpl();
 	
 	public Map<String,String> doLogin(String uiId, String uiPwd) {
@@ -23,6 +24,11 @@ public class UserServiceImpl implements UserService {
 		userinfo.put("uiId",uiId);
 		userinfo.put("uiPwd",uiPwd);
 		return udao.signupinfo(userinfo);
+		
+	}
+	
+	public List<Map<String,String>> getUserList(Map<String,String> user){
+		return udao.selectUserList(user);
 		
 	}
 	
