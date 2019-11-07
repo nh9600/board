@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="rDiv">
+	</div>
+	<button onclick="startGame()">게임시작</button>
+	<script>
+		var rDiv = document.getElementById("rDiv");
+		var rNum;
+		function startGame() {
+			rNum = Math.floor(Math.random()*16)+1;
+			var html = '<table border="1">';
+			var n = 1;
+			for (var i = 1; i <= 4; i++) {
+				html += '<tr>';
+				for (var j = 1; j <= 4; j++) {
+					html+= '<td><button onclick="clickBtn(this.'+ (n++) +')">난 지뢰 아님</button></td>';
+				}
+				html += '</tr>';
+			}
+			html += '</table>';
+			rDiv.innerHTML = html;
+		}
+		function clickBtn(btnObj.btnNum){
+			if(btnNum==rNum){
+				alert('사실 난 지뢰였음!');
+			}else{
+				btnObj.parentNode.innerHTML = '난 지뢰 아니랬잖아!!';
+			}
+		}
+		/* 	for(var i=1;i<=10;i++){	
+		 var rNum = Math.random();
+		 rNum = Math.floor(rNum*16)+1;
+		 document.write(rNum+'<br>');
+		 } */
+	</script>
+</body>
+</html>
