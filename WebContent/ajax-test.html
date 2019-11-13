@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+url:<input type="text" id="url">
+<button onclick="doSend()">SEND</button>
+<div id="rDiv"></div>
+<script>
+const xhr = new XMLHttpRequest();//더이상 변경이 안됨, 인스턴트화 시킴
+var rDiv = document.getElementById('rDiv');//브라우저가 이동한게 아니라 rDiv에 집어 넣었기 때문에
+function doSend(){
+	var url = document.getElementById('url').value;
+	//alert(xhr.readyState); 오픈하기 전이 0
+	xhr.open('GET',url);//function get방식, url로 접근
+	//오픈하고나서 1
+	
+	xhr.onreadystatechange = function(e){//on 이벤트는 모두 소문자, readystate가 바뀔때마다 실행함
+		//서버에서 일할때 3
+		if(xhr.readyState==4){//0,1,2,3,4
+			if(xhr.status==200){//200(성공했다면)
+				rDiv.innerHTML = xhr.responseText;//얘가 가지고있는 responseText를 띄움 
+			}else{
+				rDiv.innerHTML = xhr.responseText;
+			}
+		}
+	}
+	
+	xhr.send();
+}
+
+
+
+//const b = '123';상수,자바로 얘기하면 final, 값을 변경하지 않을거라면
+</script>
+</body>
+</html>

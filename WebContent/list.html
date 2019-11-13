@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+//var arr = {};
+//arr.name = 1;
+//arr['name'] = 1;
+/* var str = '{"name":"홍길동","age":"33"}'
+var str = JSON.stringify(hArr);
+var hArr2 = JSON.parse(str); */
+
+var h = {
+		name:1,//키,밸류 위에 것과 같음
+		age:22//키,밸류 
+};//이런 구조는 function기반 애들만 가능
+//var hArr = [h,h,h];
+var hArr = [];
+hArr.push(h);
+hArr.push(h);
+hArr.push(h);//이렇게 써도 위에 것과 같음
+console.log(hArr);//모두 불러옴 */
+
+
+window.onload = function(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','/list');
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				var list = JSON.parse(xhr.responseText);
+				var html = '<table border="1">';
+				html+='<tr>';
+				html+='<th>번호</th>';
+				html+='<th>제목</th>';
+				html+='<th>작성자</th>';
+				html+='<th>작성일자</th>';
+				html+='<th>게시시간</th>';
+				html+='</tr>';
+				
+				for(var i=0;i<list.length;i++){
+					html+='<tr>';
+					html+='<td>'+ list[i].biNum +'</td>'
+					html+='<td>'+ list[i].biTitle +'</td>'
+					html+='<td>'+ list[i].uiName +'</td>'
+					html+='<td>'+ list[i].credat +'</td>'
+					html+='<td>'+ list[i].cretim +'</td>'
+					html+='</tr>';
+				}
+				html+='</table>';
+				html+='<tr>';
+				html+='<th colspan="5"><button>글쓰기</button></th>';
+				html+='</tr>';
+				document.getElementById('rDiv').innerHTML = html;
+			}
+		}
+	}
+	xhr.send();
+	
+}
+
+function goPage(url) {
+	location.href = url;
+}
+
+
+/* 	
+	var html ='<table border="1">';
+	html+='<tr>';
+	html+='<th>이름</th><th>나이</th>';
+	html+='</tr>';
+	for(var i=0;i<hArr.length;i++){
+		var human = hArr[i];
+		html+='<tr>';
+		html += '</td>'+ human.name+'</td><td>'+ human.age+'</td>';
+		html+='</tr>';
+	}
+	html+='</table>';
+	document.getElementById('rDiv').innerHTML = html;
+//function test(param 1){//p1,p2,p3,p4여러개의 파라메터가 있어도 호출가능(하지만 p1.name='sad'이런 식으로 값을 바꾸는건 안됨) 
+//	alert(2);//자바스크립트는 오버로딩이 없으니까 마지막에 있는 2가 나옴 */
+//}//넣어도 그만 안넣어도 그만(옵션 파라메터니까!, 정의할 수 있는 데이터 타입이 없으니까)
+</script>
+<div id="rDiv"></div>
+</body>
+</html>
